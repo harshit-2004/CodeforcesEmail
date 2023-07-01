@@ -20,7 +20,7 @@ const JWTPassport = require('./config/passport-jwt');
 
 const passportLocal = require('./config/passport-local-strategy');
 
-const passportGoogle = require('./config/passport-google-auth2-strategy');
+const passportGoogle = require('./config/passport-google-auth2-Strategy');
 
 const passportGithub = require('./config/passport-github2-Strategy');
 

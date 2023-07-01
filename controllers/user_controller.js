@@ -13,12 +13,13 @@ module.exports.signup = function(req,res){
 }
 
 module.exports.signout= function(req,res){
-    req.logout();
-    if(err){
-        log("Error in signout ",err);
-        return next(err);
-    }
-    return res.redirect('/');
+    req.logout(function(err){
+        if(err){
+          console.log("error in making value ",err);
+          return next(err);
+        }
+        return res.redirect('/');
+      });
 }
 
 module.exports.createSession = function(req,res){
