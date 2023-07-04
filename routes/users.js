@@ -23,4 +23,6 @@ router.get('/auth/github',passport.authenticate('github',{scope:['profile','emai
 
 router.get('/auth/github/callback',passport.authenticate('github',{failureRedirect:'/users/signin'}),userController.createSession);
 
+router.get('/profile/:id',passport.checkAuthentication,userController.profile);
+
 module.exports = router;

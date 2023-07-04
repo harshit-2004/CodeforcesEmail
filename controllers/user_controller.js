@@ -13,17 +13,19 @@ module.exports.signup = function(req,res){
 }
 
 module.exports.signout= function(req,res){
+    console.log("logged out successfully");
     req.logout(function(err){
         if(err){
-          console.log("error in making value ",err);
-          return next(err);
+            console.log("error in making value ",err);
+            return next(err);
         }
+        req.flash('success','Logged out Successfully');
         return res.redirect('/');
       });
 }
 
 module.exports.createSession = function(req,res){
-    console.log(req.body);
+    req.flash('success','Logged in Successfully');
     return res.redirect('/');
 }
 
@@ -40,4 +42,11 @@ module.exports.create = async function(req,res){
     }catch(err){
         console.log("Error in creating User ",err);
     }
+}
+
+module.exports.profile = function(req,res){
+    console.log("profile is called");
+    return res.render('profile',{
+        title:"From User controler"
+    });
 }

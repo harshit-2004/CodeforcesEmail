@@ -12,6 +12,14 @@ const path = require('path');
 
 const db = require('./config/mongoose');
 
+const flash = require('connect-flash');
+
+const customMware = require('./config/middleware');
+
+const cookieParser = require('cookie-parser');
+
+const nodemailer = require('nodemailer');
+
 const session = require('express-session');
 
 const passport = require('passport');
@@ -27,6 +35,8 @@ const passportGithub = require('./config/passport-github2-Strategy');
 const expressLayouts = require('express-ejs-layouts');
 
 app.use(express.urlencoded({extended:true}));
+
+app.use(cookieParser());
 
 app.use(expressLayouts);
 
@@ -57,6 +67,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(passport.setAuthenticatedUser);
+
+app.use(flash());
+
+app.use(customMware.setFlash);
 
 app.use(express.static('./assets'));
 
