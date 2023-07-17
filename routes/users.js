@@ -23,6 +23,14 @@ router.get('/auth/github',passport.authenticate('github',{scope:['profile','emai
 
 router.get('/auth/github/callback',passport.authenticate('github',{failureRedirect:'/users/signin'}),userController.createSession);
 
-router.get('/profile/:id',passport.checkAuthentication,userController.profile);
+router.get('/profile',passport.checkAuthentication,userController.profile);
+
+router.post('/profile_udpate',userController.profile_update);
+
+router.get('/setting',passport.checkAuthentication,userController.setting);
+
+router.post('/emailtime:id',passport.checkAuthentication,userController.emailtime);
+
+router.post('/emailfixedtime:id',passport.checkAuthentication,userController.emailfixedtime);
 
 module.exports = router;

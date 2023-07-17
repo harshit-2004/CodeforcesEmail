@@ -15,9 +15,14 @@ const userSchema = new mongoose.Schema({
         required:true
     },
     avatar:{
-        type:String,
-
-    }
+        type:String
+    },
+    fixtime:[
+        {
+            type:Number,
+            unique:true
+        }
+    ]
 },{
     timestamps:true
 });

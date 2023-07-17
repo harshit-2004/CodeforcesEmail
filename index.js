@@ -6,7 +6,7 @@ const port = 8000;
 
 const Mongostore = require('connect-mongo');
 
-const { connect } = require('mongoose');
+const { connect, set } = require('mongoose');
 
 const path = require('path');
 
@@ -22,6 +22,8 @@ const nodemailer = require('nodemailer');
 
 const session = require('express-session');
 
+const Contests = require('./models/Contests');
+
 const passport = require('passport');
 
 const JWTPassport = require('./config/passport-jwt');
@@ -31,6 +33,10 @@ const passportLocal = require('./config/passport-local-strategy');
 const passportGoogle = require('./config/passport-google-auth2-Strategy');
 
 const passportGithub = require('./config/passport-github2-Strategy');
+
+const allcontest = require('./config/Contest');
+
+const fixtime = require('./config/fixedtimemailer');
 
 const expressLayouts = require('express-ejs-layouts');
 
@@ -71,6 +77,16 @@ app.use(passport.setAuthenticatedUser);
 app.use(flash());
 
 app.use(customMware.setFlash);
+
+setInterval(allcontest.contestlist, 1000 * 60*60);
+
+
+let interval ;
+if(!(Contests.countDocuments()==0)){
+    interval = setInterval(fixtime.mailsender, 1000 * 59);
+}else{
+    clearInterval(interval);
+}
 
 app.use(express.static('./assets'));
 

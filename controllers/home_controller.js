@@ -1,5 +1,9 @@
-module.exports.home = function(req,res){
+const Codeforces = require('../models/Contests');
+
+module.exports.home = async function(req,res){
+    let contestlist = await Codeforces.find({});
     return res.render('home',{
-        title:"From User controler"
+        title:"CodeforcesEmail",
+        contestlist: contestlist
     });
 }
