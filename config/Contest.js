@@ -10,7 +10,7 @@ async function contestdata(){
     // console.log(response);
     let contest = response.data;
     let cont = contest.filter(function(contest) {
-      return contest.status === "BEFORE";
+      return (contest.status === "BEFORE");
     });
 
     await Contests.deleteMany({});
@@ -29,7 +29,6 @@ async function contestdata(){
           });
         }
       }
-    
     console.log('Contest list updated successfully');
   }catch(error) {
     console.error(error);

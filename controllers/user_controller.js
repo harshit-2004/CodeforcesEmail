@@ -7,6 +7,7 @@ const path = require('path');
 const Fixedtimeemail = require('../models/fixedtimeemail');
 
 const Variabletimeemail = require('../models/timebeforecontest');
+const { log } = require('console');
 
 module.exports.signin = function(req,res){
     req.flash('success','Sign In Successfully');
@@ -86,11 +87,15 @@ module.exports.profile_update = async function(req,res){
       }
 }
 
-module.exports.setting = function(req,res){
-    const fixedtime = Fixedtimeemail.findOne({user:req.params.id}); 
-    return res.render('setting',{ 
-        fixtime : fixedtime 
-    });
+module.exports.setting = async function(req,res){
+    console.log(req.body);
+    // const fixedtime = await Fixedtimeemail.findOne({user:req.params.id}); 
+    // console.log(fixedtime);
+    return res.render('setting'
+    // ,{
+    //     // fixedtime : fixedtime.fixtime
+    // }
+    );
 }
 
 module.exports.emailfixedtime = async function(req,res){
@@ -104,9 +109,10 @@ module.exports.emailfixedtime = async function(req,res){
                 user:req.params.id
             });
         }
-        console.log(req.body.time);
-        fixedtime.fixtime.push(req.body.time);
-        fixedtime.save();
+        if(!fixedtime.fixtime.includes(req.body.time)){
+            fixedtime.fixtime.push(req.body.time);
+            fixedtime.save();
+        }
         return res.redirect('back');
     }catch(err){
         console.log("Error in making err ",err);
@@ -117,18 +123,63 @@ module.exports.emailfixedtime = async function(req,res){
 module.exports.emailtime = async function(req,res){
     console.log("giving the value of req.body ",req.params.id);
     try{
-        let user = await User.findById(req.params.id);
+        let hours = req.body.hours;
+        let min = req.body.minutes;
+        if(hours=='0'&&min=='0'){
+            req.flash("Please fill valid data");
+            return res.redirect('back');
+        }
         let varitime = await Variabletimeemail.findOne({user:req.params.id}); 
-        if(user&&!varitime){
+        if(!varitime){
             varitime = await Variabletimeemail.create({
                 user:req.params.id
             });
         }
-        console.log(req.body.time);
-        varitime.time.push(req.body.time);
-        varitime.save();
+        if(hours.length==1){
+            hours='0'+hours;
+        }
+        if(min.length==1){
+            min='0'+min;
+        }
+        let time = hours+":"+min;
+        if(!varitime.time.includes(time)){
+            varitime.time.push(time);
+            varitime.save();
+        }
         return res.redirect('back');
     }catch(err){
         console.log("Error in making err ",err);
+    }
+}
+
+module.exports.contestwebsite = async function(req,res){
+    console.log("hello hii in contestwebsite");
+    try{
+        let user = await User.findById(req.params.id).exec();
+        for(let sit of req.body.data){
+            let element = user.sites.find((site) => site === sit);
+            if(!element){
+                console.log("pushing value ",sit);
+                user.sites.push(sit);
+            }
+        }
+        user.save();
+        console.log(req.body.data);
+        req.flash("Preference updated ");
+        return res.status(200).json({
+            data:"Succesfully updated Preference"
+        })
+    }catch(err){
+        console.log("Error in making err ",err);
+    }
+}
+
+module.exports.fixtimedelete = async function(req,res){
+    try{
+        // let fixtime = Fixedtimeemail.findOne(req.body)
+        console.log(req.body);
+        return res.redirect('back');
+    }catch(err){
+        console.log("error in getting value ",err);
     }
 }

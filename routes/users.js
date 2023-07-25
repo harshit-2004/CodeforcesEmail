@@ -33,4 +33,8 @@ router.post('/emailtime:id',passport.checkAuthentication,userController.emailtim
 
 router.post('/emailfixedtime:id',passport.checkAuthentication,userController.emailfixedtime);
 
+router.post('/contestwebsite:id',passport.checkAuthentication,userController.contestwebsite);
+
+router.post('/deletefixedtime:id',passport.checkAuthentication,userController.fixtimedelete);
+
 module.exports = router;

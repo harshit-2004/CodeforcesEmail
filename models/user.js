@@ -22,6 +22,18 @@ const userSchema = new mongoose.Schema({
             type:Number,
             unique:true
         }
+    ],
+    variabletime:[
+        {
+            type:Number,
+            unique:true
+        },
+    ],
+    sites:[
+        {
+            type:String,
+            unique:true
+        }
     ]
 },{
     timestamps:true

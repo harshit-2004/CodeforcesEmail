@@ -38,6 +38,8 @@ const allcontest = require('./config/Contest');
 
 const fixtime = require('./config/fixedtimemailer');
 
+const variabletime = require('./config/timebeforecontest');
+
 const expressLayouts = require('express-ejs-layouts');
 
 app.use(express.urlencoded({extended:true}));
@@ -86,6 +88,13 @@ if(!(Contests.countDocuments()==0)){
     interval = setInterval(fixtime.mailsender, 1000 * 59);
 }else{
     clearInterval(interval);
+}
+
+let interval2 ;
+if(!(Contests.countDocuments()==0)){
+    interval2 = setInterval(variabletime.mailsender, 1000 * 59);
+}else{
+    clearInterval(interval2);
 }
 
 app.use(express.static('./assets'));

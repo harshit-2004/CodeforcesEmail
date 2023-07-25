@@ -3,6 +3,40 @@
 </div>
 <div>
 
+    <div class="mx-10">
+        <form action="/users/contestwebsite<%=locals.user.id%>" method="post">
+        <% if(locals.user.sites.includes("HackerRank")){ %>
+            <input type="checkbox" name="HackerRank" checked class="codingsites"> HackerRank
+        <% }else{ %>
+            <input type="checkbox" name="HackerRank" class="codingsites"> HackerRank
+        <%}%>
+        <% if(locals.user.sites.includes("CodeChef")){ %>
+            <input type="checkbox" name="CodeChef" checked class="codingsites"> CodeChef
+        <% }else{ %>
+            <input type="checkbox" name="CodeChef" class="codingsites"> CodeChef
+        <%}%>
+        <% if(locals.user.sites.includes("HackerEarth")){ %>
+            <input type="checkbox" name="HackerEarth" checked class="codingsites"> HackerEarth
+        <% }else{ %>
+            <input type="checkbox" name="HackerEarth" class="codingsites"> HackerEarth
+        <%}%>
+        <% if(locals.user.sites.includes("CodeForces")){ %>
+            <input type="checkbox" name="CodeForces" checked class="codingsites"> CodeForces
+        <% }else{ %>
+            <input type="checkbox" name="CodeForces" class="codingsites"> CodeForces
+        <%}%>
+        <% if(locals.user.sites.includes("LeetCode")){ %>
+            <input type="checkbox" name="LeetCode" checked class="codingsites"> LeetCode
+        <% }else{ %>
+            <input type="checkbox" name="LeetCode" class="codingsites"> LeetCode
+        <%}%>
+            <button class="mx-10 px-10 bg-orange-400 px-5 py-2 hover:bg-orange-600" type="submit" id="but-1" value="<%=locals.user.id%>">Save</button>
+        </form>
+    </div>
+
+
+    
+
     <div class="bg-blue-200 mx-10 my-5 p-5">
         <form action="/users/emailtime<%=locals.user.id%>" method="post">
             <span class="text-2xl">Email send  at </span>
@@ -22,3 +56,5 @@
     </div>
     
 </div>
+
+<script src="/js/setting.js"></script>
