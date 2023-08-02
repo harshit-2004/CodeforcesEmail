@@ -88,13 +88,15 @@ module.exports.profile_update = async function(req,res){
 }
 
 module.exports.setting = async function(req,res){
-    console.log(req.body);
-    // const fixedtime = await Fixedtimeemail.findOne({user:req.params.id}); 
+    const fixedtime = await Fixedtimeemail.findOne({user:req.params.id}); 
+    const variable = await Variabletimeemail.findOne({user:req.params.id});
     // console.log(fixedtime);
+    // console.log(variable);
     return res.render('setting'
-    // ,{
-    //     // fixedtime : fixedtime.fixtime
-    // }
+    ,{
+        fixedtime : fixedtime.fixtime,
+        variabletime : variable.time
+    }
     );
 }
 
@@ -152,34 +154,69 @@ module.exports.emailtime = async function(req,res){
     }
 }
 
-module.exports.contestwebsite = async function(req,res){
-    console.log("hello hii in contestwebsite");
-    try{
+module.exports.contestwebsite = async function (req, res) {
+    // console.log("hello hii in contestwebsite",req.body.data);
+    try {
         let user = await User.findById(req.params.id).exec();
-        for(let sit of req.body.data){
-            let element = user.sites.find((site) => site === sit);
-            if(!element){
-                console.log("pushing value ",sit);
+        for (let sit of user.sites) {
+            let element = req.body.list.find((site) => site === sit);
+            if (!element) {
+                user.sites.pull(sit);
+            }
+        }
+        for (let sit of req.body.list) {
+            let element = user.sites.includes(sit);
+            if (!element) {
                 user.sites.push(sit);
             }
         }
         user.save();
-        console.log(req.body.data);
         req.flash("Preference updated ");
         return res.status(200).json({
-            data:"Succesfully updated Preference"
-        })
-    }catch(err){
-        console.log("Error in making err ",err);
+            data: "Successfully updated Preference",
+        });
+    } catch (err) {
+        console.log("Error in making err ", err);
     }
-}
+};
+
 
 module.exports.fixtimedelete = async function(req,res){
     try{
-        // let fixtime = Fixedtimeemail.findOne(req.body)
-        console.log(req.body);
-        return res.redirect('back');
+        let fixeddata = req.body.list[0].substr(3,24);
+        let user = await Fixedtimeemail.findOne({user:fixeddata});
+        // console.log(fixeddata);
+        for(var air of req.body.list){
+            let dataitem = air.substr(28,5);
+            user.fixtime.pull(dataitem);
+            // console.log(dataitem);
+        }
+        user.save();
+        return res.status(200).json({
+            data:"Succesfully Deleted  Items"
+        })
     }catch(err){
         console.log("error in getting value ",err);
+    }
+}
+
+module.exports.varinamedelete = async function(req,res){
+    // console.log(req.body.list);
+    try{
+        let varidata = req.body.list[0].substr(3,24);
+        // console.log(varidata);
+        let user = await Variabletimeemail.findOne({user:varidata});
+        for(var air of req.body.list){
+            let dataitem = air.substr(28,5);
+            user.time.pull(dataitem);
+            // console.log("getting dataitem ",dataitem);
+        }
+        user.save();
+        // console.log(req.body.list);
+        return res.status(200).json({
+            data:"Succesfully Deleted  Items"
+        })
+    }catch(err){
+        console.log(err);
     }
 }

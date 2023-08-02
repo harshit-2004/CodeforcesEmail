@@ -33,10 +33,9 @@
             <button class="mx-10 px-10 bg-orange-400 px-5 py-2 hover:bg-orange-600" type="submit" id="but-1" value="<%=locals.user.id%>">Save</button>
         </form>
     </div>
-
-
     
-
+    
+    
     <div class="bg-blue-200 mx-10 my-5 p-5">
         <form action="/users/emailtime<%=locals.user.id%>" method="post">
             <span class="text-2xl">Email send  at </span>
@@ -47,6 +46,20 @@
             </button>
         </form>
     </div>
+    
+    <% if(locals.user) { %>
+        <div class="variableitemlist" id="variableitemlist<%=locals.user.id%>">
+            <% for(let item of variabletime) {%>
+                <div class="mx-10 my-10">
+                    <input class="variname" type="checkbox" name="<%=item%>" id="var<%=locals.user.id%>-<%=item%>" ><%=item%>
+                </div>
+            <%}%>
+            <% if(variabletime.length) { %>
+            <button class="mx-10 bg-orange-400 px-5 rounded-full py-2 hover:bg-orange-600" type="submit" id="but-31">Delete</button>
+            <%}%>
+        </div>
+    <%}%>
+    
     <div class="bg-blue-200 mx-10 my-5 p-5">
         <form action="/users/emailfixedtime<%=locals.user.id%>" method="post">
             <span class="text-2xl">Notification sent at fixed time on contest day. </span>
@@ -54,6 +67,18 @@
             <button type="submit" class="bg-orange-400 px-5 rounded-full py-2 hover:bg-orange-600">+</button>
         </form>
     </div>
+    <% if(locals.user) { %>
+        <div class="fixeditemlist" id="fixeditemlist<%=locals.user.id%>">
+            <% for(let item of fixedtime) {%>
+                <div class="mx-10 my-10">
+                    <input class="fixedname" type="checkbox" name="<%=item%>" id="fix<%=locals.user.id%>-<%=item%>"><%=item%>
+                </div>
+            <%}%>
+            <% if(fixedtime.length) { %>
+            <button class=" mx-10 bg-orange-400 px-5 rounded-full py-2 hover:bg-orange-600" type="submit" id="but-30">Delete</button>
+            <%}%>
+        </div>
+    <%}%>
     
 </div>
 

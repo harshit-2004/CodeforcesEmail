@@ -27,7 +27,7 @@ router.get('/profile',passport.checkAuthentication,userController.profile);
 
 router.post('/profile_udpate',userController.profile_update);
 
-router.get('/setting',passport.checkAuthentication,userController.setting);
+router.get('/setting:id',passport.checkAuthentication,userController.setting);
 
 router.post('/emailtime:id',passport.checkAuthentication,userController.emailtime);
 
@@ -36,5 +36,9 @@ router.post('/emailfixedtime:id',passport.checkAuthentication,userController.ema
 router.post('/contestwebsite:id',passport.checkAuthentication,userController.contestwebsite);
 
 router.post('/deletefixedtime:id',passport.checkAuthentication,userController.fixtimedelete);
+
+router.post('/fixnamedelete',passport.checkAuthentication,userController.fixtimedelete);
+
+router.post('/varinamedelete',passport.checkAuthentication,userController.varinamedelete);
 
 module.exports = router;
