@@ -14,7 +14,7 @@ module.exports.mailsender = async function(req,res){
     var cont = await Contests.find();
     const fixedtime = await Fixedtime.find({}).populate('user');
     for(let contes of cont){
-        console.log("hello in fixed time");
+        // console.log("hello in fixed time");
         var date = new Date();
         if(contes.in_24_hours==="Yes"){
             for(let fixt of fixedtime){
@@ -22,11 +22,11 @@ module.exports.mailsender = async function(req,res){
                 for(let time of fixt.fixtime){
                     let hours = time.substring(0,2);
                     let minutes = time.substring(3,5);
-                        console.log("hours ",hours," minutes ",minutes);
-                        console.log("hours ",date.getHours()," minutes ",date.getMinutes());
+                        // console.log("hours ",hours," minutes ",minutes);
+                        // console.log("hours ",date.getHours()," minutes ",date.getMinutes());
                         if(fixt.user.sites.find((site) => site === contes.site)){
                             if(date.getHours()==hours&&date.getMinutes()==minutes){
-                                console.log("doing job");
+                                // console.log("doing job");
                                 let object = {
                                     time : time,
                                     name : fixt.user.name,
@@ -38,7 +38,7 @@ module.exports.mailsender = async function(req,res){
                                 console.log(object);
                                 let job = queue.create('emailsendingattime',object).save(function(err){
                                     if(err){console.log("error in saving email queue ",err);}
-                                    console.log("job id ",job.id);
+                                    // console.log("job id ",job.id);
                                 });
                         }
                     }

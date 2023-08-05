@@ -4,12 +4,14 @@ const User = require('../models/user');
 
 const cryptojs = require('crypto-js');
 
+const config = require('./config');
+
 var GitHubStrategy = require('passport-github2').Strategy;
 
 passport.use(new GitHubStrategy({
-    clientID:"da508c4b2fcc4787b913",
-    clientSecret: "53c2ccf3aecf0d97ed1c7d7ca6b96a0590d43bc7",
-    callbackURL: "http://localhost:8000/users/auth/github/callback"
+    clientID:config.github_client_id,
+    clientSecret:config.github_clientSecret ,
+    callbackURL: config.github_callbackUrl
   }, async function(accessToken, refreshToken, profile, cb) {
     if(profile.email){
         let user = await User.findOne({ email: profile.email });

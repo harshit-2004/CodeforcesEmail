@@ -42,6 +42,8 @@ const variabletime = require('./config/timebeforecontest');
 
 const expressLayouts = require('express-ejs-layouts');
 
+const config = require("./config/config.js");
+
 app.use(express.urlencoded({extended:true}));
 
 app.use(cookieParser());
@@ -57,7 +59,7 @@ app.set('views','./views');
 
 app.use(session({
     name:'Harshitcookie',
-    secret:'sessioncookie',
+    secret:config.session_cookie_secret_key,
     saveUninitialized:false,
     resave:false,
     cookie:{

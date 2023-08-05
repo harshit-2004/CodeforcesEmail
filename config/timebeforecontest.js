@@ -7,7 +7,7 @@ const queue = require('../config/kue');
 module.exports.mailsender = async function (req, res) {
   try {
     var cont = await Contests.find();
-    console.log("hello in variable time");
+    // console.log("hello in variable time");
     let timebeforeconte = await timebeforecontest.find().populate('user');
     for (let contes of cont) {
         if (contes.in_24_hours === 'Yes') {
@@ -42,9 +42,9 @@ module.exports.mailsender = async function (req, res) {
                             // Assuming you have a function to send the email
                             let job = queue.create('emailsendingatvariableMailer',object).save(function(err){
                                 if(err){console.log("error in saving email queue ",err);}
-                                console.log("job id ",job.id);
+                                // console.log("job id ",job.id);
                             });
-                            console.log('Email sent successfully');
+                            // console.log('Email sent successfully');
                         }
                     }
                 }

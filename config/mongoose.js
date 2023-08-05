@@ -1,6 +1,8 @@
 const mongoose =require('mongoose');
 
-mongoose.connect(`mongodb://localhost/condeforcesuserlogin`);
+const config = require('./config');
+
+mongoose.connect(config.db);
 
 const db = mongoose.connection;
 
