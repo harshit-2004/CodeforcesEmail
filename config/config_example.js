@@ -3,8 +3,8 @@ const secretkey = {
     smtp:{
         service:'gmail',
         host:'smtp.gmail.com',
-        port:587,
-        secure:false,
+        port:xyz,
+        secure:true,
         auth:{
             user:xyz,
             pass:xyz
