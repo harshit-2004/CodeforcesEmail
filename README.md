@@ -1,6 +1,6 @@
 # CodeforcesEmail
 
-Welcome to CodeforcesEmail - Your go-to platform for staying updated on Codeforces contests!
+Welcome to CodeforcesEmail - Your go-to platform for staying updated on Codeforces, Codechef, Hackerrank, Hackerearth, Leetcode contests!
 
 ## Dashboard
 
