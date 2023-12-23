@@ -1,2 +1,2 @@
-# Contest-Update
-Making the contest Update system Easy.
+# Codeforces
+Codeforces email system easy 
