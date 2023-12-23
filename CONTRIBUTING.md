@@ -35,7 +35,9 @@ Thank you for considering contributing to CodeforcesEmail! This guide outlines t
    - Click on the "New Pull Request" button.
    - Provide a clear title and description for your pull request.
 
-7. Wait for the maintainers to review and merge your changes. We appreciate your contribution!
+7. Update config_example.js file in config folder to all authentic data and change its name to config.js.
+
+8. Wait for the maintainers to review and merge your changes. We appreciate your contribution!
 
 ## Code Style
 
