@@ -45,10 +45,6 @@ Please follow the existing code style and conventions used in the project. Consi
 
 If you are looking for ways to contribute, check the [issue tracker](https://github.com/harshit-2004/CodeforcesEmail/issues) for open issues. Feel free to pick up any issue that interests you or open a new one if you find a bug or have an enhancement in mind.
 
-## License
-
-By contributing to CodeforcesEmail, you agree that your contributions will be licensed under the [Harshit](LICENSE).
-
 Thank you for contributing to CodeforcesEmail!
 ```
 

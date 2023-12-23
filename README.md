@@ -35,7 +35,3 @@ Join the CodeforcesEmail community by signing up with Google, GitHub, or creatin
 ## How to Contribute
 
 We welcome contributions! If you want to contribute to CodeforcesEmail, please follow the [contribution guidelines](CONTRIBUTING.md).
-
-## License
-
-This project is licensed under the [Harshit](LICENSE).
