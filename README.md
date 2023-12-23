@@ -10,7 +10,8 @@ Stay informed about the upcoming contests within the next 24 hours.
 
 ## Profile
 
-![Profile](https://github.com/harshit-2004/Contest-Update/assets/96365691/571a4816-8d0c-4cd1-8925-579a738b2232.png)
+![Profile](<img width="1440" alt="Screenshot 2023-12-23 at 3 39 53 PM" src="https://github.com/harshit-2004/CodeforcesEmail/assets/96365691/75558d01-2177-4ea0-aec5-bc398a973f5e">
+)
 
 Update your profile with ease by managing credentials like password and username.
 
