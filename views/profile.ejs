@@ -33,10 +33,13 @@
             <label for="about" class="font-semibold text-gray-700 block pb-1">Email</label>
             <input disabled id="email" class="border-1  rounded-r px-4 py-2 w-full" type="email" value="<%=locals.user.email%>" required/>
           </div>
-          <div class="pb-4 password">
+          <div class="pb-4 password flex-row">
             <label for="password" class="font-semibold text-gray-700 block pb-1">Password</label>
-            <input disabled id="password" class="border-1  rounded-r px-4 py-2 w-full" type="password" value="<%=locals.user.password%>" required/>
-          </div>
+            <div class="flex">
+              <input disabled id="password" class="border-1 rounded-r px-4 py-2 w-full" type="password" value="<%=locals.user.password%>" required/>
+              <i class="fa-sharp fa-solid fa-eye-slash -ml-10 cursor-pointer py-3" id="togglePassword"></i>
+            </div>
+            </div>
           <span class="text-gray-600 pt-4 block opacity-70">Personal login information of your account</span>
         </div>
       </div>

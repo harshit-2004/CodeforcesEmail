@@ -1,5 +1,5 @@
 function codeforces() {
-    console.log(navigator);
+    // console.log(navigator);
     // var st = $('.start');
     // st.each(function() {
     //   var currentValue = $(this).text(); // Get the current value of the div
@@ -11,11 +11,20 @@ function codeforces() {
     var dt = $('.duration');
     dt.each(function() {
       var currentValue = $(this).text(); // Get the current value of the div
-      console.log(currentValue);
+      // console.log(currentValue);
       var modifiedValue = durationconverter(currentValue); // Call your custom function to modify the value
-      console.log(modifiedValue);
+      // console.log("modified value ",modifiedValue);
       $(this).text(modifiedValue); // Update the value of the div
     });
+
+    var name = $('.username');
+    name.each(function(){
+      var currentValue = $(this).text(); // Get the current value of the div
+      // console.log(currentValue);
+      var modifiedValue = capitalizeFirstLetter(currentValue); // Call your custom function to modify the value
+      // console.log("modified value ",modifiedValue);
+      $(this).text(modifiedValue);
+    })
     // var dt = $('.rela');
     // dt.each(function() {
     //   var currentValue = $(this).text(); // Get the current value of the div
@@ -60,3 +69,7 @@ function codeforces() {
   //   console.log(formattedTime);
   //   return formattedTime;
   // }
+
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
