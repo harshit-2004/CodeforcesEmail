@@ -2,7 +2,8 @@ const passport = require('passport');
 
 const User = require('../models/user.js');
 
-const cryptojs = require('crypto-js');
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 const config = require('./config.js');
 
@@ -19,7 +20,9 @@ passport.use(new GoogleStrategy({
             name: profile.displayName,
             email: profile.emails[0].value,
             avatar: profile.photos[0].value,
-            password: cryptojs.SHA256(profile.id).toString()
+            password: bcrypt.hash(profile.id, saltRounds, function(err, hash) {
+              return hash.toString();
+          })
         });
         console.log(user);
         return cb(null, user);

@@ -2,7 +2,8 @@ const passport = require('passport');
 
 const User = require('../models/user');
 
-const cryptojs = require('crypto-js');
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 const config = require('./config');
 
@@ -20,7 +21,9 @@ passport.use(new GitHubStrategy({
                 name: profile.displayName,
                 email: profile.email,
                 avatar: profile.photos[0].value,
-                password: cryptojs.SHA256(profile.id).toString()
+                password: bcrypt.hash(profile.id, saltRounds, function(err, hash) {
+                    return hash.toString();
+                })
             });
             return cb(null, user);
         }
@@ -32,7 +35,9 @@ passport.use(new GitHubStrategy({
                 name: profile.displayName,
                 email: profile.username,
                 avatar: profile.photos[0].value,
-                password: cryptojs.SHA256(profile.id).toString()
+                password: bcrypt.hash(profile.id, saltRounds, function(err, hash) {
+                    return hash.toString();
+                })
             });
             return cb(null, user);
         }
