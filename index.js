@@ -24,6 +24,8 @@ const session = require('express-session');
 
 const Contests = require('./models/Contests');
 
+const axios = require('axios');
+
 const passport = require('passport');
 
 const JWTPassport = require('./config/passport-jwt');
@@ -82,22 +84,24 @@ app.use(flash());
 
 app.use(customMware.setFlash);
 
-setInterval(allcontest.contestlist, 1000 * 60*60);
 
 
-let interval ;
-if(!(Contests.countDocuments()==0)){
-    interval = setInterval(fixtime.mailsender, 1000 * 59);
-}else{
-    clearInterval(interval);
-}
+// setInterval(allcontest.contestlist, 1000 * 60*60);
 
-let interval2 ;
-if(!(Contests.countDocuments()==0)){
-    interval2 = setInterval(variabletime.mailsender, 1000 * 59);
-}else{
-    clearInterval(interval2);
-}
+
+// let interval ;
+// if(!(Contests.countDocuments()==0)){
+//     interval = setInterval(fixtime.mailsender, 1000 * 59);
+// }else{
+//     clearInterval(interval);
+// }
+
+// let interval2 ;
+// if(!(Contests.countDocuments()==0)){
+//     interval2 = setInterval(variabletime.mailsender, 1000 * 59);
+// }else{
+//     clearInterval(interval2);
+// }
 
 app.use(express.static('./assets'));
 
