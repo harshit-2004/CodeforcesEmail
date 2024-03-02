@@ -28,11 +28,11 @@ class CodeChefService extends SiteService {
     contest_info.url = `https://www.codechef.com/${contest.contest_code}`;
     contest_info.duration = parseInt(contest.contest_duration) * SECONDS_IN_MINUTE;
 
-    contest_info.start_time = new Date(contest.contest_start_date_iso).getTime();
+    contest_info.start_time = (new Date(contest.contest_start_date_iso).toISOString());
     contest_info.site = "CodeChef";
 
     if (contest.contest_end_date_iso) {
-      contest_info.end_time = new Date(contest.contest_end_date_iso).getTime();
+      contest_info.end_time = (new Date(contest.contest_end_date_iso)).toISOString();
     } else {
       contest_info.end_time = contest_info.start_time + (10 * 365 * 24 * 60 * 60 * 1000); // 10 years in milliseconds
       contest_info.duration = contest_info.end_time - contest_info.start_time;

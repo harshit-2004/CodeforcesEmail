@@ -6,7 +6,8 @@ const CondeforcesGymServices = require('../config/Contest_Platforms/codeforcesgy
 const CodeChefService = require('../config/Contest_Platforms/codechef');
 const HackerRankService = require('../config/Contest_Platforms/hackerrank');
 
-async function allContests(req, res) {
+// async function allContests(req, res) {
+async function allContests() {
     try {
       await ContestModel.deleteMany({})
       .then((result) => {
@@ -14,6 +15,7 @@ async function allContests(req, res) {
       }).catch((error) => {
         console.error('Error deleting documents:', error);
       })
+      
         const leetCodeService = new LeetCodeService();
         await leetCodeService.update_contests();
 
@@ -30,15 +32,18 @@ async function allContests(req, res) {
         await hackerRankService.update_contests();
         
         // console.log("hello123",contests);
-        const contests = await ContestModel.find({}).catch((error)=>{
-          console.error("Error in fetching document");
-        });
-        return res.status(200).json({allContests:contests});
+        // const contests = await ContestModel.find({}).catch((error)=>{
+        //   console.error("Error in fetching document");
+        // });
+        // return res.status(200).json();
+        console.log("done fetching contests");
     } catch (error) {
         console.error(error);
-        res.status(500).send('Internal Server Error');
+        // res.status(500).send('Internal Server Error');
     }
 }
+
+allContests();
 
 module.exports = {
     allContests

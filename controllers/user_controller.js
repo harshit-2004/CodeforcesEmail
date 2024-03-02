@@ -88,16 +88,34 @@ module.exports.profile_update = async function(req,res){
 }
 
 module.exports.setting = async function(req,res){
+
     const fixedtime = await Fixedtimeemail.findOne({user:req.params.id}); 
     const variable = await Variabletimeemail.findOne({user:req.params.id});
     // console.log(fixedtime);
     // console.log(variable);
-    return res.render('setting'
-    ,{
-        fixedtime : fixedtime.fixtime,
-        variabletime : variable.time
+    if(fixedtime==null&&variable==null){
+        return res.render('setting',{
+            fixedtime : [],
+            variabletime : []
+            }
+        );
+    }else if(fixedtime==null){
+        return res.render('setting',{
+            fixedtime : [],
+            variabletime : variable.time
+        })
+    }else if(variable==null){
+        return res.render('setting',{
+            fixedtime : fixedtime.fixtime,
+            variabletime : []
+        })
+    }else{
+        return res.render('setting',{
+            fixedtime : fixedtime.fixtime,
+            variabletime : variable.time
+            }
+        );
     }
-    );
 }
 
 module.exports.emailfixedtime = async function(req,res){

@@ -9,7 +9,8 @@
             <% if(locals.user){ %>
                 <div class="relative">
                     <% if(locals.user.avatar){ %>
-                        <img id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" class="w-6 h-6 rounded-full cursor-pointer" src="<%=locals.user.avatar%>" alt="#">
+                        <!-- <%= locals.user.avatar%> -->
+                        <img id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" class="w-6 h-6 rounded-full cursor-pointer" src="<%= locals.user.avatar %>" alt="#">
                     <% }else{ %>
                     <img id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" class="w-6 h-6 rounded-full cursor-pointer" src="http://www.gravatar.com/avatar/" alt="#">
                     <% } %>

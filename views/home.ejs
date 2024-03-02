@@ -5,19 +5,20 @@
         </div>
         <div class="flex flex-wrap">
         <% for(var contest of contestlist){%>
-            <a href="<%= contest.url %>" class="h-70 w-80 border border-black bg-white rounded-xl p-5">
-                <div class="relative rounded-[13px] lc-md:h-[194px] lc-md:min-h-[194px] h-[167px] min-h-[167px] ">
-                <div class="h-40 w-60">
+            <a href="<%= contest.url %>" class="h-70 w-80 border border-black bg-white rounded-xl p-5 m-10">
+                <div class="relative rounded-[13px] lc-md:h-[194px] lc-md:min-h-[194px] h-[167px] min-h-[167px]">
+                <div class="h-40 w-60 m-10">
+                    <%console.log(contest)%>
                     <% if(contest.site=="CodeForces"){%>
-                        <img src="/assets/images/codeforces.png" alt="<%= contest.name %>" class="h-full w-full object-cover rounded-t-xl" />
+                        <img src="/images/codeforces.png" alt="<%= contest.name %>" class="h-full w-full object-cover rounded-t-xl" />
                     <%}else if(contest.site=="CodeChef"){%>
-                        <img src="/assets/images/codechef.jpeg" alt="<%= contest.name %>" class="h-full w-full object-cover rounded-t-xl" />
+                        <img src="/images/codechef.jpeg" alt="<%= contest.name %>" class="h-full w-full object-cover rounded-t-xl" />
                     <%}else if(contest.site=="CodeForcesGym"){%>
-                        <img src="/assets/images/codeforces.jpeg" alt="<%= contest.name %>" class="h-full w-full object-cover rounded-t-xl" />
-                    <%}else if(contest.site=="Leetcode"){%>
-                        <img src="/assets/images/leetcode.png" alt="<%= contest.name %>" class="h-full w-full object-cover rounded-t-xl" />
+                        <img src="/images/codeforces.png" alt="<%= contest.name %>" class="h-full w-full object-cover rounded-t-xl" />
+                    <%}else if(contest.site=="LeetCode"){%>
+                        <img src="/images/leetcode.png" alt="<%= contest.name %>" class="h-full w-full object-cover rounded-t-xl" />
                     <%}else if(contest.site=="HackerRank"){%>
-                        <img src="/assets/images/hackerrank.png" alt="<%= contest.name %>" class="h-full w-full object-cover rounded-t-xl" />
+                        <img src="/images/hackerrank.png" alt="<%= contest.name %>" class="h-full w-full object-cover rounded-t-xl" />
                     <%}%>
                 </div>
                 </div>
