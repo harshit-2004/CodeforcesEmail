@@ -36,7 +36,7 @@ const passportGoogle = require('./config/passport-google-auth2-Strategy');
 
 const passportGithub = require('./config/passport-github2-Strategy');
 
-const allcontest = require('./config/Contest');
+const allcontest = require('./controllers/Pagecontroller.js');
 
 const fixtime = require('./config/fixedtimemailer');
 
@@ -84,7 +84,7 @@ app.use(flash());
 
 app.use(customMware.setFlash);
 
-// setInterval(allcontest.contestlist, 1000 * 60*60);
+setInterval(allcontest.allContests, 1000*60*60 );
 
 let interval ;
 if(!(Contests.countDocuments()==0)){
