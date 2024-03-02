@@ -5,15 +5,13 @@ const Contests = require('../models/Contests');
 async function contestdata(){
   try {
     console.log("Hello");
-    const response = await axios.get('https://kontests.net/api/v1/all');
+    const response = await axios.get('http//localhost:8000/allcontests');
 
     // console.log(response);
     let contest = response.data;
     let cont = contest.filter(function(contest) {
       return (contest.status === "BEFORE");
     });
-
-    await Contests.deleteMany({});
 
     for (var co of cont) {
       if(co.in_24_hours === "Yes"){

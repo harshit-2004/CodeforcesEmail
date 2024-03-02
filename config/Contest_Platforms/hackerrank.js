@@ -65,4 +65,4 @@ class HackerRankService extends SiteService {
     }
   }
 
-  module.exports = HackerRankService;
+module.exports = HackerRankService;

@@ -9,19 +9,15 @@
                 <div class="relative rounded-[13px] lc-md:h-[194px] lc-md:min-h-[194px] h-[167px] min-h-[167px] ">
                 <div class="h-40 w-60">
                     <% if(contest.site=="CodeForces"){%>
-                        <img src="/images/codeforces.png" alt="<%= contest.name %>" class="h-full w-full object-cover rounded-t-xl" />
-                    <%}else if(contest.site=="Codechef"){%>
-                        <img src="/images/codechef.jpeg" alt="<%= contest.name %>" class="h-full w-full object-cover rounded-t-xl" />
-                    <%}else if(contest.site=="Atcoder"){%>
-                        <img src="/images/atcoder.png" alt="<%= contest.name %>" class="h-full w-full  object-cover rounded-t-xl" />
+                        <img src="/assets/images/codeforces.png" alt="<%= contest.name %>" class="h-full w-full object-cover rounded-t-xl" />
+                    <%}else if(contest.site=="CodeChef"){%>
+                        <img src="/assets/images/codechef.jpeg" alt="<%= contest.name %>" class="h-full w-full object-cover rounded-t-xl" />
+                    <%}else if(contest.site=="CodeForcesGym"){%>
+                        <img src="/assets/images/codeforces.jpeg" alt="<%= contest.name %>" class="h-full w-full object-cover rounded-t-xl" />
                     <%}else if(contest.site=="Leetcode"){%>
-                        <img src="/images/leetcode.png" alt="<%= contest.name %>" class="h-full w-full object-cover rounded-t-xl" />
-                    <%}else if(contest.site=="Hackerearth"){%>
-                        <img src="/images/hackerearth.jpeg" alt="<%= contest.name %>" class="h-full w-full object-cover rounded-t-xl" />
-                    <%}else if(contest.site=="Hackerrank"){%>
-                        <img src="/images/hackerrank.png" alt="<%= contest.name %>" class="h-full w-full object-cover rounded-t-xl" />
-                    <%}else if(contest.site=="Topcoder"){%>
-                        <img src="/images/topcoder.jpeg" alt="<%= contest.name %>" class="h-full w-full object-cover rounded-t-xl" />
+                        <img src="/assets/images/leetcode.png" alt="<%= contest.name %>" class="h-full w-full object-cover rounded-t-xl" />
+                    <%}else if(contest.site=="HackerRank"){%>
+                        <img src="/assets/images/hackerrank.png" alt="<%= contest.name %>" class="h-full w-full object-cover rounded-t-xl" />
                     <%}%>
                 </div>
                 </div>

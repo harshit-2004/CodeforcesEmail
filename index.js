@@ -84,24 +84,21 @@ app.use(flash());
 
 app.use(customMware.setFlash);
 
-
-
 // setInterval(allcontest.contestlist, 1000 * 60*60);
 
+let interval ;
+if(!(Contests.countDocuments()==0)){
+    interval = setInterval(fixtime.mailsender, 1000 * 59);
+}else{
+    clearInterval(interval);
+}
 
-// let interval ;
-// if(!(Contests.countDocuments()==0)){
-//     interval = setInterval(fixtime.mailsender, 1000 * 59);
-// }else{
-//     clearInterval(interval);
-// }
-
-// let interval2 ;
-// if(!(Contests.countDocuments()==0)){
-//     interval2 = setInterval(variabletime.mailsender, 1000 * 59);
-// }else{
-//     clearInterval(interval2);
-// }
+let interval2 ;
+if(!(Contests.countDocuments()==0)){
+    interval2 = setInterval(variabletime.mailsender, 1000 * 59);
+}else{
+    clearInterval(interval2);
+}
 
 app.use(express.static('./assets'));
 

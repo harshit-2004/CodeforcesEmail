@@ -30,7 +30,10 @@ async function allContests(req, res) {
         await hackerRankService.update_contests();
         
         // console.log("hello123",contests);
-        return res.status(200).json("Saved all Contests");
+        const contests = await ContestModel.find({}).catch((error)=>{
+          console.error("Error in fetching document");
+        });
+        return res.status(200).json({allContests:contests});
     } catch (error) {
         console.error(error);
         res.status(500).send('Internal Server Error');
