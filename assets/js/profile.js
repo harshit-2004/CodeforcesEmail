@@ -8,7 +8,7 @@ $('a.editbutton').click(function(){
         let name = $('#name').val();
         let email = $('#email').val();
         let password = $('#password').val();
-        let avatar = $('#avatar').val();
+        let avatar = $('#showImage').val();
         let id = $('a.editbutton').prop('id');
         console.log(avatar);
         if(validateEmail(email)&&validatePassword(password)){

@@ -10,9 +10,10 @@
                 <div class="relative">
                     <% if(locals.user.avatar){ %>
                         <!-- <%= locals.user.avatar%> -->
-                        <img id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" class="w-6 h-6 rounded-full cursor-pointer" src="<%= locals.user.avatar %>" alt="#">
+                        <img id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" class="w-6 h-6 rounded-full cursor-pointer" src="http://www.gravatar.com/avatar/" alt="#">
+                        <!-- <img id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" class="w-6 h-6 rounded-full cursor-pointer" src="<%= locals.user.avatar %>" alt="#"> -->
                     <% }else{ %>
-                    <img id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" class="w-6 h-6 rounded-full cursor-pointer" src="http://www.gravatar.com/avatar/" alt="#">
+                        <img id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" class="w-6 h-6 rounded-full cursor-pointer" src="http://www.gravatar.com/avatar/" alt="#">
                     <% } %>
                     <!-- Dropdown menu -->
                     <div id="userDropdown" class="border- z-10 hidden absolute right-0 mt-2 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
@@ -64,4 +65,4 @@
       });
     });
   </script>
-    <script src="css/font-awesome.css"></script>
+    <!-- <script src="css/font-awesome.css"></script> -->

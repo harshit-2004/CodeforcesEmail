@@ -6,7 +6,6 @@ const CondeforcesGymServices = require('../config/Contest_Platforms/codeforcesgy
 const CodeChefService = require('../config/Contest_Platforms/codechef');
 const HackerRankService = require('../config/Contest_Platforms/hackerrank');
 
-// async function allContests(req, res) {
 async function allContests() {
     try {
       await ContestModel.deleteMany({})

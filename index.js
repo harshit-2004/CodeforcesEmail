@@ -84,21 +84,27 @@ app.use(flash());
 
 app.use(customMware.setFlash);
 
-setInterval(allcontest.allContests, 1000*60*60 );
+const cron = require('node-cron');
 
-let interval ;
-if(!(Contests.countDocuments()==0)){
-    interval = setInterval(fixtime.mailsender, 1000 * 59);
-}else{
-    clearInterval(interval);
-}
+cron.schedule('0 0 * * *', () => {
+    allcontest.allContests();
+});
 
-let interval2 ;
-if(!(Contests.countDocuments()==0)){
-    interval2 = setInterval(variabletime.mailsender, 1000 * 59);
-}else{
-    clearInterval(interval2);
-}
+// Check if there are documents and schedule fixtime.mailsender if there are
+cron.schedule('*/59 * * * *', async () => {
+    const count = await Contests.countDocuments();
+    if (count > 0) {
+        fixtime.mailsender();
+    }
+});
+
+// Check if there are documents and schedule variabletime.mailsender if there are
+cron.schedule('*/59 * * * *', async () => {
+    const count = await Contests.countDocuments();
+    if (count > 0) {
+        variabletime.mailsender();
+    }
+});
 
 app.use(express.static('./assets'));
 
