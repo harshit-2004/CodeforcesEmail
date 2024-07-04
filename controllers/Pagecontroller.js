@@ -8,12 +8,12 @@ const HackerRankService = require('../config/Contest_Platforms/hackerrank');
 
 async function allContests() {
     try {
-      await ContestModel.deleteMany({})
-      .then((result) => {
-        console.log(`Deleted ${result.deletedCount} documents`);
-      }).catch((error) => {
-        console.error('Error deleting documents:', error);
-      })
+      // await ContestModel.deleteMany({})
+      // .then((result) => {
+      //   console.log(`Deleted ${result.deletedCount} documents`);
+      // }).catch((error) => {
+      //   console.error('Error deleting documents:', error);
+      // })
       
         const leetCodeService = new LeetCodeService();
         await leetCodeService.update_contests();

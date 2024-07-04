@@ -90,21 +90,25 @@ cron.schedule('0 0 * * *', () => {
     allcontest.allContests();
 });
 
-// Check if there are documents and schedule fixtime.mailsender if there are
-cron.schedule('*/59 * * * *', async () => {
-    const count = await Contests.countDocuments();
-    if (count > 0) {
-        fixtime.mailsender();
-    }
-});
+if(config.fixTimeM!=0){
+    // Check if there are documents and schedule fixtime.mailsender if there are
+    cron.schedule('*/59 * * * *', async () => {
+        const count = await Contests.countDocuments();
+        if (count > 0) {
+            fixtime.mailsender();
+        }
+    });
+}
 
-// Check if there are documents and schedule variabletime.mailsender if there are
-cron.schedule('*/59 * * * *', async () => {
-    const count = await Contests.countDocuments();
-    if (count > 0) {
-        variabletime.mailsender();
-    }
-});
+if(config.varTimeM!=0){
+    // Check if there are documents and schedule variabletime.mailsender if there are
+    cron.schedule('*/59 * * * *', async () => {
+        const count = await Contests.countDocuments();
+        if (count > 0) {
+            variabletime.mailsender();
+        }
+    });
+}
 
 app.use(express.static('./assets'));
 

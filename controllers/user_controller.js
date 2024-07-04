@@ -4,6 +4,8 @@ const fs = require('fs');
 
 const path = require('path');
 
+const config = require('../config/config');
+
 const Fixedtimeemail = require('../models/fixedtimeemail');
 
 const Variabletimeemail = require('../models/timebeforecontest');
@@ -125,6 +127,7 @@ module.exports.emailfixedtime = async function(req,res){
         let user = await User.findById(req.params.id);
         let fixedtime = await Fixedtimeemail.findOne({user:req.params.id}); 
         if(user&&!fixedtime){
+            config.fixTimeM = 1;
             fixedtime = await Fixedtimeemail.create({
                 user:req.params.id
             });
@@ -151,6 +154,7 @@ module.exports.emailtime = async function(req,res){
         }
         let varitime = await Variabletimeemail.findOne({user:req.params.id}); 
         if(!varitime){
+            config.varTimeM = 1;
             varitime = await Variabletimeemail.create({
                 user:req.params.id
             });
