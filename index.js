@@ -36,7 +36,7 @@ const passportGoogle = require('./config/passport-google-auth2-Strategy');
 
 const passportGithub = require('./config/passport-github2-Strategy');
 
-const allcontest = require('./controllers/Pagecontroller.js');
+const {allContests} = require('./controllers/Pagecontroller.js');
 
 const fixtime = require('./config/fixedtimemailer');
 
@@ -86,8 +86,8 @@ app.use(customMware.setFlash);
 
 const cron = require('node-cron');
 
-cron.schedule('0 0 * * *', () => {
-    allcontest.allContests();
+cron.schedule('0 0 * * *',async () => {
+    await allContests();
 });
 
 if(config.fixTimeM!=0){

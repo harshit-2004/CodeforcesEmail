@@ -14,10 +14,11 @@ passport.use(new GitHubStrategy({
     clientSecret:config.github_clientSecret ,
     callbackURL: config.github_callbackUrl
   }, async function(accessToken, refreshToken, profile, cb) {
+    console.log(profile,cb);
     if(profile.email){
         let user = await User.findOne({ email: profile.email });
         if (!user) {
-            user = await User.create({
+            user = new User({
                 name: profile.displayName,
                 email: profile.email,
                 avatar: profile.photos[0].value,
@@ -26,12 +27,12 @@ passport.use(new GitHubStrategy({
                 })
             });
             return cb(null, user);
-        }
-        return cb(null, user);
+        }else
+            return cb(null, user);
     }else{
         let user = await User.findOne({ email: profile.username });
         if (!user) {
-            user = await User.create({
+            user = new User({
                 name: profile.displayName,
                 email: profile.username,
                 avatar: profile.photos[0].value,

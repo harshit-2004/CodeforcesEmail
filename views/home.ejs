@@ -1,5 +1,5 @@
-  <div class="flex flex-col m-20 mt-10">
-      <% if(contestlist.length!=0){%>
+<div class="flex flex-col m-20 mt-10">
+    <% if(contestlist.length!=0){%>
         <div class="text-blue-500 text-center font-normal text-5xl mb-20">
             Upcoming contests
         </div>
@@ -7,46 +7,46 @@
         <% for(var contest of contestlist){%>
             <a href="<%= contest.url %>" class="h-70 w-80 border border-black bg-white rounded-xl p-5 m-10">
                 <div class="relative rounded-[13px] lc-md:h-[194px] lc-md:min-h-[194px] h-[167px] min-h-[167px]">
-                <div class="h-40 w-60 m-10">
-                    <%console.log(contest)%>
-                    <% if(contest.site=="CodeForces"){%>
-                        <img src="/images/codeforces.png" alt="<%= contest.name %>" class="h-full w-full object-cover rounded-t-xl" />
-                    <%}else if(contest.site=="CodeChef"){%>
-                        <img src="/images/codechef.jpeg" alt="<%= contest.name %>" class="h-full w-full object-cover rounded-t-xl" />
-                    <%}else if(contest.site=="CodeForcesGym"){%>
-                        <img src="/images/codeforces.png" alt="<%= contest.name %>" class="h-full w-full object-cover rounded-t-xl" />
-                    <%}else if(contest.site=="LeetCode"){%>
-                        <img src="/images/leetcode.png" alt="<%= contest.name %>" class="h-full w-full object-cover rounded-t-xl" />
-                    <%}else if(contest.site=="HackerRank"){%>
-                        <img src="/images/hackerrank.png" alt="<%= contest.name %>" class="h-full w-full object-cover rounded-t-xl" />
-                    <%}%>
-                </div>
+                    <div class="h-40 w-60 m-10">
+                        <% console.log(contest) %>
+                        <% if(contest.site=="CodeForces"){%>
+                            <img src="/images/codeforces.png" alt="<%= contest.name %>" class="h-full w-full object-cover rounded-t-xl" />
+                        <%} else if(contest.site=="CodeChef"){%>
+                            <img src="/images/codechef.jpeg" alt="<%= contest.name %>" class="h-full w-full object-cover rounded-t-xl" />
+                        <%} else if(contest.site=="CodeForcesGym"){%>
+                            <img src="/images/codeforces.png" alt="<%= contest.name %>" class="h-full w-full object-cover rounded-t-xl" />
+                        <%} else if(contest.site=="LeetCode"){%>
+                            <img src="/images/leetcode.png" alt="<%= contest.name %>" class="h-full w-full object-cover rounded-t-xl" />
+                        <%} else if(contest.site=="HackerRank"){%>
+                            <img src="/images/hackerrank.png" alt="<%= contest.name %>" class="h-full w-full object-cover rounded-t-xl" />
+                        <%}%>
+                    </div>
                 </div>
                 <div class="flex items-center lc-md:min-h-[84px] min-h-[80px] px-4">
-                <div class="h-[54px]">
-                    <div class="font-medium lc-md:text-xl text-[17px] leading-[22px] text-label-1 dark:text-dark-label-1">
-                    <div class="truncate">
-                        <span
-                        class="transition-colors group-hover:text-blue-s dark:group-hover:text-dark-blue-s"
-                        ><%= contest.name %></span>
+                    <div class="h-[54px]">
+                        <div class="font-medium lc-md:text-xl text-[17px] leading-[22px] text-label-1 dark:text-dark-label-1">
+                            <div class="truncate">
+                                <span class="transition-colors group-hover:text-blue-s dark:group-hover:text-dark-blue-s overflow-hidden overflow-ellipsis whitespace-nowrap">
+                                    <%= contest.name %>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="flex items-center text-[14px] leading-[22px] text-label-2 dark:text-dark-label-2">
+                            <%= contest.start_time %>
+                        </div>
+                        <div class="flex items-center text-[14px] leading-[22px] text-label-2 dark:text-dark-label-2 duration">
+                            <%= contest.duration %>
+                        </div>
                     </div>
-                    </div>
-                    <div class="flex items-center text-[14px] leading-[22px] text-label-2 dark:text-dark-label-2" >
-                    <%= contest.start_time %>
-                    </div>
-                    <div class="flex items-center text-[14px] leading-[22px] text-label-2 dark:text-dark-label-2 duration" >
-                        <%= contest.duration %>
-                    </div>
-                </div>
                 </div>
             </a>
         <%}%>
-        <%}else{%>
+        <%} else {%>
             <div class="flex flex-row mx-5 bg-white my-10 p-5">
-                <span class="center"> No Contest Available </span>
+                <span class="center">No Contest Available</span>
             </div>
         <%}%>
     </div>
-  </div>
+</div>
 
 <script src="/js/home.js"></script>

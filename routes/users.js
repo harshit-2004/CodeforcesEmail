@@ -19,7 +19,7 @@ router.get('/auth/google',passport.authenticate('google',{scope:['profile','emai
 
 router.get('/auth/google/callback',passport.authenticate('google',{failureRedirect:'/users/signin'}),userController.createSession);
 
-router.get('/auth/github',passport.authenticate('github',{scope:['profile','email']}));
+router.get('/auth/github',passport.authenticate('github',{scope:['profile','user:email']}));
 
 router.get('/auth/github/callback',passport.authenticate('github',{failureRedirect:'/users/signin'}),userController.createSession);
 

@@ -12,11 +12,13 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 passport.use(new GoogleStrategy({
     clientID: config.google_client_id,
     clientSecret: config.google_clientSecret,
-    callbackURL:config.google_callbackUrl
-  },async function(accessToken, refreshToken, profile, cb) {
+    callbackURL:config.google_callbackUrl,
+    passReqToCallback: true
+  },async function(req,accessToken, refreshToken, profile, cb) {
+    // console.log("profile",profile,cb);
     let user = await User.findOne({ email: profile.emails[0].value });
     if (!user) {
-        user = await User.create({
+        user = new User({
             name: profile.displayName,
             email: profile.emails[0].value,
             avatar: profile.photos[0].value,
