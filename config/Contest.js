@@ -5,7 +5,7 @@ const Contests = require('../models/Contests');
 async function contestdata(){
   try {
     console.log("Hello");
-    const response = await axios.get('http//localhost:8000/allcontests');
+    const response = await axios.get('http//127.0.0.1:8000/allcontests');
 
     // console.log(response);
     let contest = response.data;
@@ -16,7 +16,7 @@ async function contestdata(){
     for (var co of cont) {
       if(co.in_24_hours === "Yes"){
           console.log(co);
-          await Contests.create({
+          new Contests({
               name: co.name,
               url: co.url,
               start_time: co.start_time,

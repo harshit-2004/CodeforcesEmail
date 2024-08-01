@@ -16,7 +16,7 @@ const secretkey = {
     google_client_id:xyz,
     google_clientSecret:xyz,
     google_callbackUrl: xyz,
-    db:`mongodb://localhost/condeforcesuserlogin`,
+    db:`mongodb://127.0.0.1/condeforcesuserlogin`,
     session_cookie_secret_key:xyz
 }
 

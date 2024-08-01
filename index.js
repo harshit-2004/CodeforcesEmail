@@ -69,7 +69,7 @@ app.use(session({
     // }
     },
     store: Mongostore.create({
-        mongoUrl :"mongodb://localhost:27017/mydatabase",
+        mongoUrl :"mongodb://127.0.0.1:27017/mydatabase",
         autoRemove:'disabled'
     })
 }))
